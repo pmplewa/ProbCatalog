@@ -17,8 +17,8 @@ class Zernike
     std::vector< std::vector<double> > R_order;
     std::vector< std::vector<double> > R_coeff;
 
-    // parameter indexing (https://oeis.org/A176988)
-    std::pair<int, int> idx(int j) const;
+    // parameter indexing (OSA/ANSI)
+    std::pair<int, int> index(int j) const;
 
   public:
     Zernike(int j_max, double param_min, double param_max);
