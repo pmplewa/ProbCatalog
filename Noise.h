@@ -30,7 +30,7 @@ class UniformNoise
 class VariableNoise
 {
   private:    
-    Zernike mean; // noise mean
+    Zernike mean_function; // noise mean
 
     double sigma; // noise standard deviation
     double sigma_min, sigma_max;
@@ -43,7 +43,7 @@ class VariableNoise
     void from_prior(DNest4::RNG& rng);
     double perturb(DNest4::RNG& rng);    
 
-    double get_mean(double x, double y) const { return mean.evaluate(x, y); };
+    double get_mean(double x, double y) const { return mean_function.evaluate(x, y); };
     double get_sigma() const { return sigma; };
 
     void print(std::ostream& out) const;

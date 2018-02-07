@@ -53,7 +53,7 @@ void UniformNoise::print(std::ostream& out) const
 VariableNoise::VariableNoise(
   double j_max, double param_min, double param_max,
   double sigma_min, double sigma_max)
-:mean(Zernike(j_max, param_min, param_max))
+:mean_function(Zernike(j_max, param_min, param_max))
 ,sigma_min(sigma_min)
 ,sigma_max(sigma_max)
 {
@@ -62,7 +62,7 @@ VariableNoise::VariableNoise(
 
 void VariableNoise::from_prior(DNest4::RNG& rng)
 {
-  mean.from_prior(rng);
+  mean_function.from_prior(rng);
   sigma = exp(log(sigma_min) + log(sigma_max/sigma_min)*rng.rand());
 }
 
@@ -75,7 +75,7 @@ double VariableNoise::perturb(DNest4::RNG& rng)
   if(which == 0)
   {
     // perturb noise mean
-    logH += mean.perturb(rng);
+    logH += mean_function.perturb(rng);
   }
   else if(which == 1)
   {
@@ -92,6 +92,6 @@ double VariableNoise::perturb(DNest4::RNG& rng)
 
 void VariableNoise::print(std::ostream& out) const
 {
-  mean.print(out);
+  mean_function.print(out);
   out << sigma << " ";
 }
