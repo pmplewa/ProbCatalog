@@ -12,7 +12,6 @@ class Data
     // image boundaries
     double x_min, x_max;
     double y_min, y_max;
-    double r_max;
 
     // pixel widths
     double dx, dy;
@@ -25,14 +24,14 @@ class Data
     std::vector<std::vector<double>> image; // loaded from image_file
 
     // image mask
-    std::vector<std::vector<double>> mask;
+    std::vector<std::vector<double>> mask; // loaded from mask_file
 
     static Data instance;
 
   public:
     Data();
 
-    void load(const char* metadata_file, const char* image_file);
+    void load(const char* metadata_file, const char* image_file, const char* mask_file);
 
     int get_ni() const { return ni; }
     int get_nj() const { return nj; }
@@ -41,7 +40,6 @@ class Data
     double get_x_max() const { return x_max; }
     double get_y_min() const { return y_min; }
     double get_y_max() const { return y_max; }
-    double get_r_max() const { return r_max; }
 
     double get_dx() const { return dx; }
     double get_dy() const { return dy; }

@@ -12,12 +12,11 @@ Data::Data()
 ,x_max(1.)
 ,y_min(-1.)
 ,y_max(1.)
-,r_max(1.)
 {
 
 }
 
-void Data::load(const char* metadata_file, const char* image_file)
+void Data::load(const char* metadata_file, const char* image_file, const char* mask_file)
 {
   // load the metadata
   fstream fin(metadata_file, ios::in);
@@ -58,15 +57,21 @@ void Data::load(const char* metadata_file, const char* image_file)
     abort();
   }
   image.assign(ni, vector<double>(nj));
+  for(int i=0; i<ni; i++)
+    for(int j=0; j<nj; j++)
+      fin >> image[i][j];
+  fin.close();
+
+  // load the image mask
+  fin.open(mask_file, ios::in);
+  if(!fin)
+  {
+    cerr << "# ERROR: could not open file " << mask_file << endl;
+    abort();
+  }
   mask.assign(ni, vector<double>(nj));
   for(int i=0; i<ni; i++)
     for(int j=0; j<nj; j++)
-    {
-      fin >> image[i][j];
-      if(sqrt(pow(x_rays[i][j], 2) + pow(y_rays[i][j], 2)) < r_max)
-        mask[i][j] = 1.; // inside
-      else
-        mask[i][j] = 0.; // outside
-    }
-  fin.close();
+      fin >> mask[i][j];
+  fin.close();  
 }
