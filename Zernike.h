@@ -2,7 +2,7 @@
 #define DNest4_TestCase_Zernike
 
 #include <vector>
-#include "../DNest4/code/DNest4.h"
+#include "DNest4/code/DNest4.h"
 
 class Zernike
 {

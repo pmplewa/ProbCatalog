@@ -12,7 +12,8 @@ int main(int argc, char** argv)
 
   Data::get_instance().load(
     "data/test_metadata.txt",
-    "data/test_image.txt");
+    "data/test_image.txt",
+    "data/test_mask.txt");
 
   Sampler<MyModel> sampler = setup<MyModel>(argc, argv);
   sampler.run();

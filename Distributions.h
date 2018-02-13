@@ -1,7 +1,7 @@
 #ifndef DNest4_TestCase_Distributions
 #define DNest4_TestCase_Distributions
 
-#include "../DNest4/code/Distributions/ContinuousDistribution.h"
+#include "DNest4/code/Distributions/ContinuousDistribution.h"
 
 bool is_close(double x, double y, double eps=1e-6);
 

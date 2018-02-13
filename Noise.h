@@ -1,7 +1,7 @@
 #ifndef DNest4_TestCase_Noise
 #define DNest4_TestCase_Noise
 
-#include "../DNest4/code/DNest4.h"
+#include "DNest4/code/DNest4.h"
 #include "Zernike.h"
 
 class UniformNoise

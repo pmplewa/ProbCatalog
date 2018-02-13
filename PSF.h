@@ -3,7 +3,7 @@
 
 #include <vector>
 #include <ostream>
-#include "../DNest4/code/DNest4.h"
+#include "DNest4/code/DNest4.h"
 
 class GaussianPSF
 {
