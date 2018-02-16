@@ -2,7 +2,11 @@
 
 Experimenting with probabilistic catalogs...
 
-### Resources
+Requirements:
+
+* [DNest4](https://github.com/eggplantbren/DNest4): Diffuse Nested Sampling
+
+Resources:
 
 * [Hogg+ 2010](https://arxiv.org/abs/1008.0738), Telescopes don't make catalogues!
 * [Brewer+ 2013](https://arxiv.org/abs/1211.5805), Probabilistic Catalogs for Crowded Stellar Fields
